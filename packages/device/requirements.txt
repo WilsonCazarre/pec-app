@@ -1,0 +1,5 @@
+gitcffi==1.15.0
+numpy==1.22.3
+pycparser==2.21
+pyserial==3.5
+SoundCard==0.4.1
