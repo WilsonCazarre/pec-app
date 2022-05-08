@@ -3,21 +3,6 @@ import led
 import os
 import func
 
-def print_err(info):
-	os.system("echo [31m" + "err:" + "[0m" + " " + info)
-	
-def logo():
-	os.system("echo [42m[30m")
-	os.system('echo " _______  ______      _______  _     _  _  _           _  _______  _______ "')
-	os.system('echo "(_______)(_____ \    (_______)(_)   (_)| |(_)         | |(_______)(_______)"')
-	os.system('echo " _  _  _  _____) )    _____    _     _ | | _          | | _     _  _       "')
-	os.system('echo "| ||_|| ||  __  /    |  ___)  | |   | || || |         | || |   | || |      "')
-	os.system('echo "| |   | || |  \ \  _ | |_____  \ \ / / | || |_____  _ | || |   | || |_____ "')
-	os.system('echo "|_|   |_||_|   |_|(_)|_______)  \___/  |_||_______)(_)|_||_|   |_| \______)"')
-	os.system('echo "                                                                           "')
-	os.system('echo "                                                                           "')
-	os.system("echo [0m")
-
 def init():
 	
 	os.system("cls")
