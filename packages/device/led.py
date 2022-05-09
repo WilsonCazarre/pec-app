@@ -1,3 +1,16 @@
+#this is a hardware class, meaning it is used to control physical hardware
+#this class talks to the arduino module via COM port
+
+#the messages sent have the format:
+#   [0 - 255] , [0 - 255] , [0 - 255] , ['w' , 'l' , 's']
+#       R           G           B           code/action 
+
+#code/action cheat sheet:
+# w -> dinamicaly writes the RGB value on the strip
+# l -> loads the default RGB value from the arduino's EEPROM
+# s -> saves a default RGB to the arduino's EEPROM
+
+
 import serial as se
 from serial.tools import list_ports
 
@@ -12,6 +25,7 @@ class LEDs:
 
         self.search_com()
 
+    #sends a message 
     def send(self, arr = None, R = None , G = None , B = None , string = None , code = "w"):
         
         if self.is_connected:
@@ -36,12 +50,18 @@ class LEDs:
 
             self.serial.write(out)
         
+    #manualy sets the COM
     def set_com(self,com):
             self.serial = se.Serial(COM,9600,timeout = 1)
 
-    def test(self):
-        self.serial.write(bytearray([255,0,255,ord("s")]))
+    #lists the COM ports available 
+    def list_ports(self):
 
+        ports = list_ports.comports()
+        for port in ports:
+            print(port.device)
+
+    #auto conects to the COM
     def search_com(self):
         
         ports = list_ports.comports()
@@ -54,9 +74,8 @@ class LEDs:
             for port in ports:
 
                 if self.device_type in port.description:
-                    self.serial = se.Serial(port.device,
-                                               9600,
-                                               timeout=1)
+                    self.serial = se.Serial(port.device,9600)
+                    self.serial.timeout = 1
                     self.is_connected = True
                     self.port = port.device
                     break
@@ -72,5 +91,3 @@ class LEDs:
 
                   
 
-test = LEDs()
-test.test()
