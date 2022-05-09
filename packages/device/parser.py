@@ -1,56 +1,51 @@
 
-class Value():
+
+from lb import LoopBack
+from led import LEDs
+import func
+
+#light and sound are used in all functions without exption
+#because of this fact, I've choosen to make them global variables
+
+#light represents the led strip
+#sound represents the computer's speaker
+
+light = LEDs()
+sound = LoopBack(0)
 
 
-	def __init__(type):
-		self.type = type
-		self.value = None 
+#sound setup commands
+def sound_input_list():
+	print(LoopBack.input_list())
 
-	def cast(value):
-		
-		if self.type == "int":
-			self.value = int(value)
-		if self.type == "float":
-			self.value = float(value)
-		else:
-			self.value = value
+def sound_current_speaker():
+	print(sound.speaker)
 
-		return self.value   
+def sound_set_input(number):
+	sound.set_input(number)
 
 
+#light setup commands
+def light_input_list():
+	print(light.list_ports())
 
-class Argument():
+def light_current_COM():
+	print(light.port)
 
-	def __init__(self,name,values,func):
-		self.name = name
-		self.size = size
-		self.values = values
-		self.function = func 
+def light_set_input(string):
+	light.set_com(string)
 
-	def parse(name,string):
+def light_search_input():
+	light.search_com()
 
-		search = string.split(" ")
-		search_index = 0
+#static functions
+# if code == "w" -> writes 
+# if code == "l" -> loads (when loading R,G,B are arbitrary)
+# if code == "s" -> saves
+# dafault code 	 -> "w"
+def static_send_color(R = 0, G = 0, B = 0, code = "w"):
+	light.send(arr = [R,G,B], code = code)
 
-
-		for word in search:
-			if word == self.name:
-				argument[search_index : search_index + len(self.values)]
-				break
-			search_index += 1
-
-
-class Command():
-
-	def __init__(self,name,arguments):
-		self.name = name
-		self.options = options
-
-	def run(string):
-
-		string = string.split("")
-		pass
-
-
-
-
+light_current_COM()
+while True:
+	exec(input())

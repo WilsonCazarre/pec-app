@@ -29,7 +29,6 @@ class LEDs:
     def send(self, arr = None, R = None , G = None , B = None , string = None , code = "w"):
         
         if self.is_connected:
-            print(self.port)
             code = ord(code)
             out = bytearray()
 
@@ -52,7 +51,15 @@ class LEDs:
         
     #manualy sets the COM
     def set_com(self,com):
+        
+        try:
             self.serial = se.Serial(COM,9600,timeout = 1)
+        
+        except se.SerialException:
+            self.serial = None
+            self.port = None 
+            self.is_connected = False
+
 
     #lists the COM ports available 
     def list_ports(self):

@@ -5,6 +5,7 @@ class LoopBack():
     def __init__(self,default):
         self.speaker = sc.all_microphones(include_loopback = True)[default]
 
+    @staticmethod
     def input_list():
         out = ""
         i = 0
@@ -15,7 +16,7 @@ class LoopBack():
 
         return  out 
 	
-    def set_input(number):
+    def set_input(self,number):
         self.speaker = sc.all_microphones(include_loopback = True)[number]
         
     def listen(self):
