@@ -38,7 +38,7 @@ class LEDs:
                 del arr[-1]
 
             elif R and G and B:
-                out = bytearray([int_R, G, B, code])
+                out = bytearray([R, G, B, code])
 
             elif string:
                 string = string.split(",") 
