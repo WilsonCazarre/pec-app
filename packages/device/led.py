@@ -34,7 +34,7 @@ class LEDs:
 
             if arr:
                 arr.append(code)
-                out = bytearray(arr)
+                out = bytearray([x if x < 256 else 255 for x in arr])
                 del arr[-1]
 
             elif R and G and B:

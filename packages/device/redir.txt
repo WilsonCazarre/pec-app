@@ -1,0 +1,2 @@
+sound_set_input(0) 
+dinamic_curvy(4,8,16,0.5)
