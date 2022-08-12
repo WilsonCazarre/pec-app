@@ -1,15 +1,15 @@
 module.exports = [
   {
     test: /\.node$/,
-    use: 'node-loader',
+    use: "node-loader",
   },
   {
     test: /\.(m?js|node)$/,
     parser: { amd: false },
     use: {
-      loader: '@marshallofsound/webpack-asset-relocator-loader',
+      loader: "@marshallofsound/webpack-asset-relocator-loader",
       options: {
-        outputAssetBase: 'native_modules',
+        outputAssetBase: "native_modules",
       },
     },
   },
@@ -17,14 +17,18 @@ module.exports = [
     test: /\.(js|ts|tsx)$/,
     exclude: /node_modules/,
     use: {
-      loader: 'babel-loader'
-    }
+      loader: "babel-loader",
+    },
   },
   {
     test: /\.(png|jpe?g|gif)$/i,
-    loader: 'file-loader',
+    loader: "file-loader",
     options: {
-      name: '[path][name].[ext]',
+      name: "[path][name].[ext]",
     },
-  }
-]
+  },
+  {
+    test: /\.css$/,
+    use: ["style-loader", "css-loader"],
+  },
+];

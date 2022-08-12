@@ -1,6 +1,9 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
+  ${reset}
+  
   * {
     margin: 0;
     padding: 0;
@@ -13,4 +16,4 @@ export const GlobalStyle = createGlobalStyle`
     color: #E1E1E6;
     text-align: center;
   }
-`
+`;

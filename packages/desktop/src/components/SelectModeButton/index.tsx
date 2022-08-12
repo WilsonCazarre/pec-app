@@ -1,10 +1,11 @@
-import React from "react"
-import { Container } from "./styles"
+import React from "react";
+import { Container } from "./styles";
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
+  isDisabled?: boolean;
 }
 
-export const SelectModeButton: React.FC<Props> = ({ children }) => {
-  return <Container>{children}</Container>
-}
+export const SelectModeButton: React.FC<Props> = ({ children, isDisabled }) => {
+  return <Container isDisabled={isDisabled}>{children}</Container>;
+};
